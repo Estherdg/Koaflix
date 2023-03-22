@@ -27,23 +27,25 @@ getMovies.forEach((doc) => {
   const modal = document.querySelector(".modal");
   const moreInfo = document.createElement("div");
 
-  moreInfo.innerHTML = `<div class="more-info"><h2 class="tittle-modal">${doc.id}</h2>
-  <p class="description">${doc.data().plot}</p> <p class="actors">${
-    doc.data().actors
-  }</p> <p class="director">${doc.data().director}</p>
+  moreInfo.innerHTML = `<div class="more-info">
+  <div><button class="close">x</button></div>
+  <h2 class="tittle-modal">${doc.id}</h2>
+  <p class="description">${doc.data().plot}</p> <p class="actors">${doc.data().actors
+    }</p> <p class="director">${doc.data().director}</p>
   <p class="genres">${doc.data().genres}</p> <p class="year">${doc.data().year}</p>
   </div>`;
 
   modal.appendChild(moreInfo);
+
   const btn = document.querySelector(".info");
   const close = document.querySelector(".close");
 
-  btn.addEventListener("click", function () {
-    modal.style.display = "block";
+  btn.addEventListener("click", function(e) {
+    e.preventDefault();
+    modal.classList.add("modal-s");
   });
 
-  close.addEventListener("click", function () {
+  close.addEventListener("click", function() {
     modal.style.display = "none";
   });
-
 });

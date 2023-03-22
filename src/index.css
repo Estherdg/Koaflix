@@ -31,11 +31,19 @@ h3 {
 .modal {
   background-color: #111111bd;
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   display: flex;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-s {
+  opacity: 1;
+  pointer-events: unset;
 }
 
 .more-info {
@@ -60,9 +68,15 @@ p {
   font-size: medium;
   color: black;
   margin: 5px;
+  position: relative;
+  border-radius: 5px;
+  cursor: default;
 }
 
-/*
+.btn-container {
+  display: flex;
+}
+
 .close {
   text-decoration: none;
   color: white;
@@ -70,7 +84,4 @@ p {
   padding: 1em 3em;
   border: 1px solid black;
   border-radius: 6px;
-  display: inline-block;
-
 }
-*/
