@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, collection } from "firebase/firestore/lite";
 
-// import "dotenv/config";
-
 const firebaseConfig = {
   apiKey: "AIzaSyCa8j_Q1dqN5ZcvHEsSDAWBp_XZsW9Fbog",
   authDomain: "test-eoifront.firebaseapp.com",
@@ -23,29 +21,32 @@ getMovies.forEach((doc) => {
 
   carta.appendChild(padre);
 
-  // Accedemos al div modal que será el que nos muestre la info más detallada de la peli.
+  const btn = document.querySelectorAll(".info");
+  for (let i = 0; i < btn.length; i++) {
+    btn[i].addEventListener("click", function (e) {
+      e.preventDefault();
+      modal.classList.add("modal-s");
+    });
+  };
+
   const modal = document.querySelector(".modal");
   const moreInfo = document.createElement("div");
-
-  moreInfo.innerHTML = `<div class="more-info">
+  for (let n = 0; n < carta.length; n++) {
+    moreInfo[n].innerHTML = `<div class="more-info">
   <div><button class="close">x</button></div>
-  <h2 class="tittle-modal">${doc.id}</h2>
-  <p class="description">${doc.data().plot}</p> <p class="actors">${doc.data().actors
-    }</p> <p class="director">${doc.data().director}</p>
-  <p class="genres">${doc.data().genres}</p> <p class="year">${doc.data().year}</p>
+  <h2 class="tittle-modal">${doc[n].id}</h2>
+  <p class="description">${doc[n].data().plot}</p> <p class="actors">${doc[n].data().actors
+      }</p> <p class="director">${doc[n].data().director}</p>
+  <p class="genres">${doc[n].data().genres}</p> <p class="year">${doc[n].data().year}</p>
   </div>`;
+    modal.appendChild(moreInfo);
+  };
 
-  modal.appendChild(moreInfo);
-
-  const btn = document.querySelector(".info");
-  const close = document.querySelector(".close");
-
-  btn.addEventListener("click", function(e) {
-    e.preventDefault();
-    modal.classList.add("modal-s");
-  });
-
-  close.addEventListener("click", function() {
-    modal.style.display = "none";
-  });
+  // Accedemos al div modal que será el que nos muestre la info más detallada de la peli.
+  const close = document.querySelectorAll(".close");
+  for (let j = 0; j < close.length; j++) {
+    close[j].addEventListener("click", function () {
+      modal.style.display = "none";
+    });
+  };
 });
