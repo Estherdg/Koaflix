@@ -62,8 +62,11 @@ p {
   margin: 5px;
 }
 
-/*
+
 .close {
+  width: 20px;
+  height: 20px;
+  font-size: x-large ;
   text-decoration: none;
   color: white;
   background-color: darkred;
@@ -73,4 +76,4 @@ p {
   display: inline-block;
 
 }
-*/
+
