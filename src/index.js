@@ -17,12 +17,13 @@ getMovies.forEach((doc) => {
   const padre = document.createElement("div");
 
   padre.innerHTML = `<div><h2 class="tittle">${doc.id}</h2>
-  <img src="${doc.data().posterUrl}" alt="${doc.id}" class="image-movie">
+  <img src="${doc.data().posterUrl}" alt="${doc.id}" class="image-movie"><br>
   <button class="info">Info</button>
   </div>`;
 
   carta.appendChild(padre);
   // Accedemos al div modal que será el que nos muestre la info más detallada de la peli.
+
   const modal = document.querySelector(".modal");
   const moreInfo = document.createElement("div");
 
