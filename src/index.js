@@ -23,22 +23,25 @@ getMovies.forEach((doc) => {
 
   carta.appendChild(padre);
   // Accedemos al div modal que será el que nos muestre la info más detallada de la peli.
-  const btn = document.querySelector(".info");
   const modal = document.querySelector(".modal");
   const moreInfo = document.createElement("div");
 
+  moreInfo.innerHTML = `<div class="more-info">
+  <h2 class="tittle-modal">${doc.id}</h2>
+  <p class="description">${doc.data().plot}</p> <p class="actors">${doc.data().actors
+    }</p> <p class="director">${doc.data().director}</p>
+  <p class="genres">${doc.data().genres}</p> <p class="year">${doc.data().year}</p>
+  </div>`;
+
   modal.appendChild(moreInfo);
+
+  const btn = document.querySelector(".info");
   const close = document.querySelector(".close");
 
-  btn.addEventListener("click", function () {
-    window.alert("");
-    // modal.style.display = "block";
-    moreInfo.innerHTML = `<div class="more-info"><h2 class="tittle-modal">${doc.id}</h2>
-    <p class="description">${doc.data().plot}</p> <p class="actors">${
-      doc.data().actors
-    }</p> <p class="director">${doc.data().director}</p>
-    <p class="genres">${doc.data().genres}</p> <p class="year">${doc.data().year}</p>
-    </div>`;
+  btn.addEventListener("click", function (e) {
+    window.alert();
+    e.preventDefault();
+    modal.classList.add("modal");
   });
 
   close.addEventListener("click", function () {
